@@ -5,7 +5,7 @@ class Layout extends Component {
     render() {
         return (
         <header id="header">
-            <nav className="navbar navbar-default">
+            <nav className="navbar  navbar-inverse" data-spy="affix">
                 {/* Classic menu, responsive menu classic */}
                 <div id="menu-classic">
                     <div className="menu-holder">
@@ -17,7 +17,7 @@ class Layout extends Component {
                                 <a href="javascript:void(0)" className={this.props.comprendre}>Comprendre</a>
                             </li>
                             <li>
-                                <a href="contact.html" className={this.props.contacts}>Contacts</a>
+                                <a href="javascript:void(0)" className={this.props.contacts}>Contacts</a>
                             </li>
                         </ul>
                     </div>

@@ -14,15 +14,13 @@ class Home extends Component {
             { /* Slider  */ }
             <div id="flexslider" className="fullpage-wrap small">
                 <ul className="slides">
-                    <li style={{backgroundImage:'url(./img/slider-business.jpg)'}}>
+                    <li  >
                         <div className="text center">
-                            <h1 className="heading center white margin-bottom-small">Les déclarations </h1><p><span id="typed" className="big white" data-typed-first="a creative company" data-typed-second="an innovative company"></span></p>
-                            <p className="heading white center margin-bottom">Consulter les déclarations des responsables publics!</p>
+                            <h1 className="center  margin-bottom-small">Les déclarations </h1><p><span id="typed" className="big white" data-typed-first="a creative company" data-typed-second="an innovative company"></span></p>
+                            <p className=" center margin-bottom">Consulter les déclarations des responsables publics!</p>
                             <br/>
                               <div className="col-xs-3 col-xs-offset-2" style= {{width:'65%'}}> <MaterialUIAutocomplete/></div>
-                        </div>
-                        
-                        <div className="gradient dark"></div>
+                        </div>                        
                     </li>
                 </ul>
                 <div id="godown">
@@ -33,12 +31,13 @@ class Home extends Component {
             </div>
             { /* END Slider  */ }
             <div id="home-wrap" className="content-section fullpage-wrap">
+                
                 { /*Advanced Search */ }
                   <AdvancedSearch/>
                 { /*END Advanced Search */ }
 
                 { /*Services */ }
-                <div className="color-background "> 
+                {/* <div className="color-background "> 
                     <div className="container">
                         <div className="row no-margin padding-onlytop-lg">
                             <div className="col-md-6 padding-leftright-null">
@@ -65,9 +64,9 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-                <div className="light-background"> 
+                {/* <div className="light-background"> 
                     <div className="container">
                         <div className="row no-margin padding-lg">
                             <div className="col-md-6 padding-leftright-null">
@@ -80,7 +79,7 @@ class Home extends Component {
                             <div className="col-md-6 padding-leftright-null">
                                 <div data-responsive="parent-height" data-responsive-id="services-corporate" className="text padding-topbottom-null">
                                     <h2 className="margin-bottom-null left">Grow your business with our software</h2>
-                                    { /*Box Services */ }
+
                                     <div className="row box-services padding-onlytop-md">
                                         <div className="col-md-6 padding-leftright-null">
                                             <div className="box-service">
@@ -97,7 +96,7 @@ class Home extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    { /*END Box Services */ }
+
                                     <div className="row no-margin">
                                         <div className="text padding-left-null padding-bottom-null">
                                             <a href="#" className="btn-pro">Read More</a>
@@ -107,7 +106,7 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 { /*END Services */ }
 
             </div>

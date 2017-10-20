@@ -18,14 +18,13 @@ class AdvancedSearch extends Component {
   
   render() {
     return (
-      <div  >
-      <div className="secondary-background">
+      <div className="light-background" style={{paddingBottom:"2rem"}}>
       <div className="container">
           { /*Section Image */ }
           <div className="row no-margin">
               <div className="col-md-9 padding-leftright-null">
                   <div className="text text-md-center">
-                      <h2 className="white small">Recherche avancée</h2>
+                      <h2 className="small">Recherche avancée</h2>
                   </div>
               </div>
           </div> 
@@ -88,7 +87,6 @@ class AdvancedSearch extends Component {
       </div>
   </div>
       
-      </div>
     );
   }
 }
