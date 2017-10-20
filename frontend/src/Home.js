@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Layout from './Layout' ;
 import MaterialUIAutocomplete from './MaterialUIAutocomplete' ;
 import AdvancedSearch from './AdvancedSearch' ;
+import LineChart from './LineChart' ;
 class Home extends Component {
   render() {
     return (
@@ -111,6 +112,7 @@ class Home extends Component {
 
             </div>
         </div>
+        <LineChart/>
         { /* END Page Content */ }
     </div>        
       </div>

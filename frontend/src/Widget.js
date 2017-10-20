@@ -3,6 +3,7 @@ import axios from 'axios' ;
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import Timeline from './Timeline' ;
 import Layout from './Layout' ;
+import {Link,NavLink,Route } from 'react-router-dom';
 
 class Widget extends Component {
   constructor(props){
@@ -64,6 +65,24 @@ class Widget extends Component {
                 </div>
                 {/* end Title */}
                 <Timeline data={this.state.declarations}/>
+                {/*  */}
+                <div className="light-background">
+                  <div className="container">
+                      <div className="row no-margin">
+                          <div className="col-md-9 padding-leftright-null">
+                              <div className="text text-md-center">
+                                  <h2 className="small">On vous donne accées aux déclarations .</h2>
+                              </div>
+                          </div>
+                          <div className="col-md-3 padding-leftright-null">
+                              <div className="text text-right padding-md-top-null text-md-center">
+                                  <Link to="/" className="btn-alt small shadow margin-null">Chercher</Link>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>                
+                {/*  */}
             </div>
         </div>
       </div>

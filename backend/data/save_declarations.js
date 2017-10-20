@@ -3,7 +3,8 @@ var fs = require('fs');
 const path = require('path')
 var config = require('./config.js');
 var request = require('request');
-var data = require('./data/declaration.js');
+//var data = require('./data/declaration.js');
+var data = require('./data/base_justice.js');
 data= data.arrayDb
 data.map(function(object, i){	
 	var qString=config.apiUrl+"/api/savedb/";	

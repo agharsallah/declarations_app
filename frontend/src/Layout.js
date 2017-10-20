@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import {Link,NavLink,Route } from 'react-router-dom';
+import Home from './Home' ;
 class Layout extends Component {
     render() {
         return (
@@ -10,7 +11,7 @@ class Layout extends Component {
                     <div className="menu-holder">
                         <ul>
                             <li>
-                                <a href="javascript:void(0)" className={this.props.rechercher}>Rechercher</a>
+                                <Link to="/" className={this.props.rechercher}>Rechercher</Link>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" className={this.props.comprendre}>Comprendre</a>

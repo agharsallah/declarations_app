@@ -1,4 +1,4 @@
-import { postNamesDb,getNamesDb,getDeclarations } from './controllers/namesController';
+import { postNamesDb,getNamesDb,getDeclarations,getDeclarationsNumber } from './controllers/namesController';
 import { postUser } from './controllers/userController';
 
 const router = (app,apiRoutes) => {
@@ -8,6 +8,7 @@ const router = (app,apiRoutes) => {
   apiRoutes.post('/savedb', postNamesDb);
   apiRoutes.get('/getnames/:declaration', getNamesDb);
   apiRoutes.get('/getDeclarations/:declaration', getDeclarations);
+  apiRoutes.get('/getDeclarationsNumber', getDeclarationsNumber);
 };
 
 export default router;
