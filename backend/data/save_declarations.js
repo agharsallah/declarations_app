@@ -5,23 +5,30 @@ var config = require('./config.js');
 var request = require('request');
 //var data = require('./data/declaration.js');
 var data = require('./data/base_justice.js');
-data= data.arrayDb
-data.map(function(object, i){	
+data= data.arrayDb;
+console.log(data.length);
+var leng = data.length
+
+//console.log(leng );
+
+for (let i = 0; i < 5000; i++) {
+	var element = data[i];
 	var qString=config.apiUrl+"/api/savedb/";	
 	var options = {
 		url: qString,
+
 		headers: {
 			'name': 'barlamen',
 			'password': 'b@rlamen1',
 			'Content-type': 'application/x-www-form-urlencoded'
 		},
 		 form: {
-			name: object.PRENOM,
-			lastName: object.NOM,
-			declarationDate: object.DATEDECLARATION,
-			job: object.FONCTION,
-			ministry: object.MINISTERE,
-			declarationObject: object.OBJET
+			name: element.name,
+			lastName: element.lastName,
+			declarationDate: element.declarationDate,
+			job: element.job,
+			ministry: element.ministry,
+			declarationObject: element.declarationObject
 		} 
 	}
 
@@ -34,7 +41,7 @@ data.map(function(object, i){
 	}
 
 	request.post(options, callback);
-})
+}
 
 
               

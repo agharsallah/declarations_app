@@ -4,6 +4,7 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import Timeline from './Timeline' ;
 import Layout from './Layout' ;
 import {Link,NavLink,Route } from 'react-router-dom';
+import config from './config' ;
 
 class Widget extends Component {
   constructor(props){
@@ -11,7 +12,7 @@ class Widget extends Component {
     this.state={declarations:[]}
   }
   componentWillMount() {
-    const url  = 'http://localhost:8080/api/getDeclarations' + this.props.match.url;
+    const url  = config.apiUrl+'/api/getDeclarations' + this.props.match.url;
     const self = this
     axios({
       method: 'get',

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 var Highcharts = require('highcharts');
 import HighchartInit from './HighchartInit' ;
 import axios from 'axios' ;
-
+import config from './config' ;
 
 class LineChart extends Component {
 constructor(props) {
@@ -14,7 +14,7 @@ componentWillMount() {
     const self=this
     axios({
         method: 'get',
-        url: 'http://localhost:8080/api/getDeclarationsNumber',
+        url: config.apiUrl+'/api/getDeclarationsNumber',
         headers: {
             'name': 'barlamen',
             'password': 'b@rlamen1'

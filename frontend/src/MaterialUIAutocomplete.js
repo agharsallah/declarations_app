@@ -4,7 +4,7 @@ import axios from 'axios' ;
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Redirect,withRouter } from 'react-router-dom';
 import SearchIcon from 'material-ui/svg-icons/action/search';
-
+import config from './config' ;
 injectTapEventPlugin();
 
 class MaterialUIAutocomplete extends Component {
@@ -34,7 +34,7 @@ class MaterialUIAutocomplete extends Component {
   performSearch() {
     const
     self = this,
-      url  = 'http://localhost:8080/api/getnames/' + this.state.inputValue;
+      url  = config.apiUrl+'/api/getnames/' + this.state.inputValue;
 
     if(this.state.inputValue !== '') {
       axios({

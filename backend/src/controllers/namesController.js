@@ -5,8 +5,7 @@ var _ = require('lodash');
  */
 export const getNamesDb = (req, res, next) => {
 	var tosearch = new RegExp(".*"+req.params.declaration+".*","i");
-
-
+		console.log(tosearch);
 		Names.aggregate([
 			
 			{ $match: { 
@@ -31,9 +30,10 @@ export const getDeclarations = (req, res, next) => {
 	let name,lastName;
 		name=(req.params.declaration).split("**")[0]
 		lastName=(req.params.declaration).split("**")[1]
+	console.log(name);
 	Names.find({name:name,lastName:lastName}
 		  , function(err, resultedName) {
-			if (err) { return next(err); }
+			if (err) { return next(err); console.log(err);}
 
 			res.json(resultedName);
 		})
@@ -50,29 +50,33 @@ export const getDeclarationsNumber = (req, res, next) => {
 /* 				if (year.charAt(0)=="0") {
 					year="20"+year;
 				}else{year="19"+year;} */
+
 				//if year don't exist in array add it to array and initialize the valueArr to 1 
 				let index =_.findIndex(arr, function(o) { return o.year == year; })
-				if (index==-1 ) {
-					arr.push({year,value:1});
-				}else{
-					(arr[index]).value+=1;
+				if (year!=undefined) {
+					if (index==-1 ) {
+						arr.push({year,value:1});
+					}else{
+						(arr[index]).value+=1;
+					}
 				}
+				
 			})
-			
+			console.log(arr);
 			res.json(_.sortBy(arr, ['year', 'value']));
 		})
 }
 
 export const postNamesDb = (req, res, next) => {
 	var namesdb = new Names();
-	console.log(req.body);		
 	namesdb.name = req.body.name;  
 	namesdb.lastName = req.body.lastName;  
 	namesdb.declarationDate = req.body.declarationDate;  
 	namesdb.job = req.body.job;  
 	namesdb.ministry = req.body.ministry; 
 	namesdb.declarationObject = req.body.declarationObject;
-
+	console.log(namesdb);		
+	
 	namesdb.save(function(err) {
 			if (err) { return next(err); }
 
