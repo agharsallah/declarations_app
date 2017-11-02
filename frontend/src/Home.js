@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Layout from './Layout' ;
 import MaterialUIAutocomplete from './MaterialUIAutocomplete' ;
-import AdvancedSearch from './AdvancedSearch' ;
+import AdvancedSearch from './advanced/AdvancedSearch' ;
 import LineChart from './LineChart' ;
 class Home extends Component {
   render() {

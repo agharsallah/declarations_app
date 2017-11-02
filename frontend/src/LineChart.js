@@ -47,6 +47,7 @@ componentWillMount() {
                         text: 'Nombre de declarations'
                     }
                 },
+                credits:false,
                 plotOptions: {
                     line: {
                         dataLabels: {

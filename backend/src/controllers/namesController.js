@@ -38,6 +38,17 @@ export const getDeclarations = (req, res, next) => {
 			res.json(resultedName);
 		})
 }
+export const getAdvancedDeclarations = (req, res, next) => {
+	console.log('ser',req.query.date);
+	
+	Names.find({$text: {$search: "mohammed"}}, {score: {$meta: "textScore"}}, 
+	function(err, resultedNames) {
+		if (err) { console.log(err);}
+		console.log(resultedNames);
+		res.send(resultedNames);
+	}).sort({score:{$meta:"textScore"}})
+		
+}
 
 /* Get data for the statistics about number of declaration per year */
 export const getDeclarationsNumber = (req, res, next) => {
