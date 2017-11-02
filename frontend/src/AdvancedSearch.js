@@ -24,7 +24,7 @@ class AdvancedSearch extends Component {
           <div className="row no-margin">
               <div className="col-md-9 padding-leftright-null">
                   <div className="text text-md-center">
-                      <h2 className="small">Recherche avancée</h2>
+                      <h2 className="small">Recherche avanc&eacute;e</h2>
                   </div>
               </div>
           </div> 
@@ -32,27 +32,26 @@ class AdvancedSearch extends Component {
           <div className="col-md-10" >
           <div className="col-md-3 padding-leftright-null">
             <SelectField
-            floatingLabelText="Objet de déclaration"
+            floatingLabelText="Objet de d&eacute;claration"
             value={this.state.value}
             onChange={this.handleChange}
             style={{width:"80%"}}
             >
             <MenuItem value={1} primaryText="Never" />
-            <MenuItem value={2} primaryText="Every Night" />
-            <MenuItem value={3} primaryText="Weeknights" />
-            <MenuItem value={4} primaryText="Weekends" />
-            <MenuItem value={5} primaryText="Weekly" />
+            <MenuItem value={2} primaryText="op1" />
+            <MenuItem value={3} primaryText="op2" />
+            <MenuItem value={4} primaryText="op3" />
           </SelectField>
           </div>
           <div className="col-md-3 padding-leftright-null">
               <SelectField
-              floatingLabelText="Date de déclaration"
+              floatingLabelText="Date de d&eacute;claration"
               value={this.state.value}
               onChange={this.handleChange}
               style={{width:"80%"}}
               >
               <MenuItem value={1} primaryText="Never" />
-              <MenuItem value={2} primaryText="Every Night" />
+              <MenuItem value={2} primaryText="op1" />
             </SelectField>
           </div>
           <div className="col-md-3 padding-leftright-null">
@@ -63,7 +62,7 @@ class AdvancedSearch extends Component {
               style={{width:"80%"}}
               >
               <MenuItem value={1} primaryText="Never" />
-              <MenuItem value={2} primaryText="Every Night" />
+              <MenuItem value={2} primaryText="op1" />
             </SelectField>
           </div>
           <div className="col-md-3 padding-leftright-null">
@@ -74,7 +73,7 @@ class AdvancedSearch extends Component {
               style={{width:"80%"}}
               >
               <MenuItem value={1} primaryText="Never" />
-              <MenuItem value={2} primaryText="Every Night" />
+              <MenuItem value={2} primaryText="op1" />
             </SelectField>
           </div>
           </div>

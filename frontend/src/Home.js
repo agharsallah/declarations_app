@@ -16,8 +16,8 @@ class Home extends Component {
                 <ul className="slides">
                     <li  >
                         <div className="text center">
-                            <h1 className="center  margin-bottom-small">Les déclarations </h1><p><span id="typed" className="big white" data-typed-first="a creative company" data-typed-second="an innovative company"></span></p>
-                            <p className=" center margin-bottom">Consulter les déclarations des responsables publics!</p>
+                            <h1 className="center  margin-bottom-small">Les d&eacute;clarations </h1><p><span id="typed" className="big white" data-typed-first="a creative company" data-typed-second="an innovative company"></span></p>
+                            <p className=" center margin-bottom">Consulter les d&eacute;clarations des responsables publics!</p>
                             <br/>
                               <div className="col-xs-3 col-xs-offset-2" style= {{width:'65%'}}> <MaterialUIAutocomplete/></div>
                         </div>                        
