@@ -7550,3 +7550,10 @@ button.mfp-close:hover {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
+.hover:hover {
+  color: #03a9f4;
+  outline: none;
+  text-decoration: none;
+  background-color: 'grey';
+  cursor:pointer;
+}

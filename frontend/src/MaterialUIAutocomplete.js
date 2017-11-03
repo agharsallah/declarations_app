@@ -20,6 +20,7 @@ class MaterialUIAutocomplete extends Component {
     }
   }
   onNewRequest(searchTerm) {
+    console.log(searchTerm);
     let url = '/name/'+searchTerm.value+"/";
     //window.location =url;
     this.setState({ redirect: true,url:url })

@@ -61,20 +61,25 @@ export const getAdvancedDeclarations = (req, res, next) => {
 					} 
 			 } 
 		},
+
 		{ 
-			 "$project": { 
-				   "_id": {name:"$name",lastName:"$lastName"}, 
+			 "$project": {  
+					name:"$name",lastName:"$lastName",
 				   "score": { 
 						 "$meta": "textScore" 
 					}
-					
 			  } 
 		 },
+		 
 		 { 
 			  "$match": { 
-					"score": { "$gt": 0.8 } 
+					"score": { "$gt": 0.6 } 
 			   } 
 		 },
+		 { $group: {
+			_id: {name:"$name",lastName:"$lastName"}  // replace `name` here twice
+			
+		  } },
 		 {$sort:{score:{$meta:"textScore"}}}
 	]
 	,function(err, resultedNames) {

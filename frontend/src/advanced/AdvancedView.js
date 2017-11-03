@@ -4,14 +4,22 @@ import axios from 'axios' ;
 import config from '../config' ;
 import Layout from '../Layout' ;
 import Pagination from './Pagination' ;
+import { Redirect,withRouter } from 'react-router-dom';
 
 class AdvancedView extends Component {
   constructor(props){
     super(props);
-    this.state={declarations:[],currentPage:1}
+    this.state={declarations:[],currentPage:1,redirect:false,url:''}
   }
   onPageChangeFromPagination(newPage){
     this.setState({currentPage: newPage});
+  }
+  performSearch(e){
+    console.log(e);
+    let searchTerm = e._id.name+"**"+e._id.lastName
+    let url = '/name/'+searchTerm+"/";
+    //window.location =url;
+    this.setState({ redirect: true,url:url })
   }
   componentWillMount() {
     //console.log(queryString.parse(this.props.match.url));
@@ -44,9 +52,11 @@ class AdvancedView extends Component {
   }
   
   render() {
-    console.log(Pagination);
     return (
       <div>
+      { 
+        this.state.redirect ? <Redirect push to={this.state.url}/>:
+        <div>
       <Layout rechercher="" comprendre="" contacts="" />
       <div id="main-wrap">
           <div id="page-content" className="header-static">
@@ -70,18 +80,39 @@ class AdvancedView extends Component {
                   <div className="row no-margin padding-lg">
                     <div className="col-md-12 padding-leftright-null">
                         <div className="text text-center padding-topbottom-null">
-                            <h2 className="margin-bottom-null left">L'historique de d&eacute;claration.</h2>
+                            <h2 className="margin-bottom-null left">R&eacute;sultat de recherche.</h2>
                         </div>
                     </div>
                   </div>
               </div>
               {/* end Title */}
-      {console.log(this.state.declarations)}
-            <Pagination currentPage={this.state.currentPage} totalPages={100} onChange={this.onPageChangeFromPagination.bind(this)} />
-              {this.state.declarations.map(function(object){ return<p>{object._id.name} </p>})}
+            
+            <div className="fluid" >
+            <div className="col-md-3"></div>
+              <ul className="col-md-6">
+                {this.state.declarations.map(function(object){    let perform = this.performSearch.bind(this,object)
+                  return<li className="hover" style={{borderBottom: "1px solid #EBEBEB",
+                float: "left",
+                width: "100%",
+                padding: "15px 25px",
+                position: "relative"}}
+                name={object._id.name}
+                lastName={object._id.lastName}
+                onClick={perform}
+                > {object._id.name+' '+object._id.lastName} </li>},this)}
+              </ul>
+              <div className="col-md-3"></div>
             </div>
-      </div>
+            
+          </div>
 
+      </div>
+      <div className="fluid" >
+      <div className="col-md-4"></div>  
+      {/* <Pagination currentPage={this.state.currentPage} totalPages={100} onChange={this.onPageChangeFromPagination.bind(this)} /> */}
+      </div>
+    </div>
+    }
     </div>
     );
   }
