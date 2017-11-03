@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Widget from './Widget' ;
+import AdvancedView from './advanced/AdvancedView' ;
 import { Route, Router, Redirect, Switch } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -17,7 +18,8 @@ const render = Component =>
     <Router history={customHistory}>
     <Switch>
       <Route exact path="/" component={Component}/>
-      <Route  path="/:Widget" component={Widget}/>
+      <Route  path="/name/:Widget" component={Widget}/>
+      <Route  path="/adv" component={AdvancedView}/>
       </Switch>
     </Router>
     </MuiThemeProvider>

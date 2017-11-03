@@ -12,7 +12,7 @@ class Widget extends Component {
     this.state={declarations:[]}
   }
   componentWillMount() {
-    const url  = config.apiUrl+'/api/getDeclarations' + this.props.match.url;
+    const url  = config.apiUrl+'/api/getDeclarations' + this.props.match.url.substr(5);
     const self = this
     axios({
       method: 'get',
@@ -32,7 +32,7 @@ class Widget extends Component {
   }
   
   render() {
-    const name = (this.props.match.url.split('**')[0]).slice(1) +' '+(this.props.match.url.split('**')[1]).replace(/\//g, '')    
+    const name = ((this.props.match.url.substr(5)).split('**')[0]).slice(1) +' '+(this.props.match.url.split('**')[1]).replace(/\//g, '')    
     
     return (
       <div>

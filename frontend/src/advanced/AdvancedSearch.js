@@ -1,9 +1,12 @@
+/* this is the component in the Home page */
 import React, { Component } from 'react';
 import axios from 'axios' ;
 import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import ChooseMenu from './ChooseMenu' ;
+import { Redirect,withRouter } from 'react-router-dom';
+
 import config from '../config' ;
 class AdvancedSearch extends Component {
   constructor(props) {
@@ -12,7 +15,9 @@ class AdvancedSearch extends Component {
     this.state = {
       objet:"_",
       date:'_',
-      ministry:'_'
+      ministry:'_',
+      redirect: false,url:'',
+      resultedAdvance:null
     }
   }
   handleChange = (event, index, value) => this.setState({value});  
@@ -22,29 +27,16 @@ class AdvancedSearch extends Component {
   getMinistry(ministry){this.setState({ministry});}
 
   performSearch(){
-    let url = config.apiUrl+'/api/getAdvancedDeclarations?objet='+this.state.objet+'&date='+this.state.date+'&ministry='+this.state.ministry;
-    console.log(this.state);
-    axios({
-      method: 'get',
-      url: url,
-      headers: {
-          'name': 'barlamen',
-          'password': 'b@rlamen1'
-      }
-    })
-    .then(function (response) {
-      console.log(response);
-
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    const self = this,
+    url="/adv?objet="+this.state.objet+"&date="+this.state.date+"&ministry="+this.state.ministry
+    this.setState({ redirect: true,url:url })
   }
   
   render() {
     return (
       <div className="light-background" style={{paddingBottom:"2rem"}}>
-      <div className="container">
+      {this.state.redirect ? <Redirect push to={this.state.url}/>:
+        <div className="container">
           { /*Section Image */ }
           <div className="row no-margin">
               <div className="col-md-9 padding-leftright-null">
@@ -88,7 +80,7 @@ class AdvancedSearch extends Component {
                   </div>
               </div>
           </div>
-      </div>
+      </div>}
   </div>
       
     );

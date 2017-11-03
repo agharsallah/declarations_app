@@ -1,3 +1,4 @@
+/* Drop Down menu component of the advanced options */
 import React, { Component } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';

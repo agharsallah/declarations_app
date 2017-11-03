@@ -38,7 +38,7 @@ export const getDeclarations = (req, res, next) => {
 			res.json(resultedName);
 		})
 }
-export const getAdvancedDeclarations = (req, res, next) => {
+/* export const getAdvancedDeclarations = (req, res, next) => {
 	console.log('ser',req.query.date);
 	
 	Names.find({$text: {$search: "mohammed"}}, {score: {$meta: "textScore"}}, 
@@ -46,7 +46,43 @@ export const getAdvancedDeclarations = (req, res, next) => {
 		if (err) { console.log(err);}
 		console.log(resultedNames);
 		res.send(resultedNames);
-	}).sort({score:{$meta:"textScore"}})
+	})
+		
+} */
+export const getAdvancedDeclarations = (req, res, next) => {
+	let to_search = req.query.objet+' '+req.query.ministry+' '+req.query.date
+	console.log('ser',to_search);
+	
+	Names.aggregate([
+		{ 
+			"$match": { 
+				   "$text": { 
+						 "$search": to_search 
+					} 
+			 } 
+		},
+		{ 
+			 "$project": { 
+				   "_id": {name:"$name",lastName:"$lastName"}, 
+				   "score": { 
+						 "$meta": "textScore" 
+					}
+					
+			  } 
+		 },
+		 { 
+			  "$match": { 
+					"score": { "$gt": 0.8 } 
+			   } 
+		 },
+		 {$sort:{score:{$meta:"textScore"}}}
+	]
+	,function(err, resultedNames) {
+		if (err) { console.log(err);}
+		//console.log(resultedNames);
+		res.send(resultedNames);
+	})
+	
 		
 }
 
