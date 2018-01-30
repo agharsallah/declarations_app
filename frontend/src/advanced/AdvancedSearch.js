@@ -63,7 +63,7 @@ class AdvancedSearch extends Component {
           </div>
           <div className="col-md-4 padding-leftright-null">
             <ChooseMenu 
-              data={ ["_","interieur", "justice", "education", "agriculture ", "finances", "defense nationale", "sante", "technologies de l'information", "presidence du gouvernement", "enseignement superieur", "affaires etrangeres", "affaires locales", "transport", "l'emploi", "affaires culturelles", "developpement economique", "jeunesse des sports", "l'energie et des mines", "l'industrie", "isie", "conseil superieur de la magistrature", "assemblee nationale","developpement regional et du plan", "droits de l'homme et de la  justice transitionnelle", "commission lutte contre la corruption"]}
+              data={ ["_","interieur", "justice", "education", "agriculture ", "finances", "defense", "sante", "technologies de l'information", "presidence du gouvernement", "enseignement superieur", "affaires etrangeres", "affaires locales", "transport", "l'emploi", "affaires culturelles", "developpement economique", "jeunesse des sports", "l'energie et des mines", "l'industrie", "isie", "conseil superieur de la magistrature", "assemblee nationale","developpement regional et du plan", "droits de l'homme et de la  justice transitionnelle", "commission lutte contre la corruption"]}
               title="Ministere"
               getSelected={this.getMinistry.bind(this)}
             />

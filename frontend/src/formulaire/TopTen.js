@@ -1,14 +1,12 @@
 /* this is the component that loads when we click search (Advanced search), this component gets name LastName from the Db of the users that have the searched key words */
 import React, { Component } from 'react';
-import axios from 'axios' ;
 import config from '../config' ;
 import Layout from '../Layout' ;
-import Pagination from './Pagination' ;
 import { Redirect,withRouter } from 'react-router-dom';
-import FlatButton from 'material-ui/FlatButton';
-import FontIcon from 'material-ui/FontIcon';
-import ActionAndroid from 'material-ui/svg-icons/action/get-app';
-class AdvancedView extends Component {
+import { Form, Text, Radio, RadioGroup, Select, Checkbox } from 'react-form';
+
+
+class TopTen extends Component {
   constructor(props){
     super(props);
     this.state={declarations:[],currentPage:1,redirect:false,url:''}
@@ -23,37 +21,22 @@ class AdvancedView extends Component {
     //window.location =url;
     this.setState({ redirect: true,url:url })
   }
-  componentWillMount() {
-    //console.log(queryString.parse(this.props.match.url));
-    const search = this.props.location.search; // could be '?foo=bar'
-    const params = new URLSearchParams(search);
-    let objet,date,ministry;
-    //setting the search critere to its value or empty string if none is chosen
-    params.get('objet')=='_'?objet='':objet=params.get('objet')
-    params.get('date')=='_'?date='':date=params.get('date')
-    params.get('ministry')=='_'?ministry='':ministry=params.get('ministry')
-
-    let url = config.apiUrl+'/api/getAdvancedDeclarations?objet='+objet+'&date='+date+'&ministry='+ministry;    
-    const self = this
-    axios({
-      method: 'get',
-      url: url,
-      headers: {
-          'name': 'barlamen',
-          'password': 'b@rlamen1'
-      }
-    })
-    .then(function (response) {
-      self.setState({declarations:response.data});
-
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-  }
   
   render() {
+    const statusOptions = [
+      {
+        label: '1 ere declaration',
+        value: 'single'
+      },
+      {
+        label: 'changement de poste',
+        value: 'relationship'
+      },
+      {
+        label: "Retraite",
+        value: 'complicated'
+      }
+    ];
     return (
       <div>
       { 
@@ -82,39 +65,40 @@ class AdvancedView extends Component {
                   <div className="row no-margin padding-lg">
                     <div className="col-md-12 padding-leftright-null">
                         <div className="text text-center padding-topbottom-null">
-                            <h2 className="margin-bottom-null left">R&eacute;sultat de recherche.</h2>
+                            <h2 className="margin-bottom-null left">Remplissez votre declaration en ligne.</h2>
                         </div>
                     </div>
                   </div>
               </div>
               {/* end Title */}
-            
-            <div className="fluid" >
-            <div className="col-md-3"></div>
-              <ul className="col-md-6">
-                {this.state.declarations.map(function(object){    let perform = this.performSearch.bind(this,object)
-                  return<li className="hover" style={{borderBottom: "1px solid #EBEBEB",
-                float: "left",
-                width: "100%",
-                padding: "15px 25px",
-                position: "relative"}}
-                name={object._id.name}
-                lastName={object._id.lastName}
-                onClick={perform}
-                > {object._id.name+' '+object._id.lastName} <FlatButton
-                label="telecharger"
-                labelPosition="before"
-                style={{marginLeft:"10px",top:'11px'}}
-                labelStyle={{}}
-                containerElement="label"
-                icon={<ActionAndroid />}
-              /></li>
-                    },this)}
-                
-              </ul>
-              
-              <div className="col-md-3"></div>
+              <div>
+              <Form onSubmit={submittedValues => this.setState( { submittedValues } )}>
+                { formApi => (
+                  <form onSubmit={formApi.submitForm} id="form2">
+                    <label htmlFor="firstName">nom</label>
+                    <Text field="firstName" id="firstName" />
+                    <label htmlFor="lastName">Prenom</label>
+                    <Text field="lastName" id="lastName" />
+                    <RadioGroup field="gender">
+                      { group => (
+                        <div>
+                          <label htmlFor="male" className="mr-2">Male</label>
+                          <Radio group={group} value="male" id="male" className="mr-3 d-inline-block" />
+                          <label htmlFor="female" className="mr-2">Female</label>
+                          <Radio group={group} value="female" id="female" className="d-inline-block" />
+                        </div>
+                      )}
+                    </RadioGroup>
+                    <label htmlFor="bio">Bio</label>
+                    <Checkbox field="authorize" id="authorize" className="d-inline-block" />
+                    <label htmlFor="status" className="d-block">Type de declaration</label>
+                    <Select field="status" id="status" options={statusOptions} />
+                    <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                  </form>
+                )}
+              </Form>
             </div>
+
             
           </div>
 
@@ -130,4 +114,4 @@ class AdvancedView extends Component {
   }
 }
 
-export default AdvancedView;
+export default TopTen;

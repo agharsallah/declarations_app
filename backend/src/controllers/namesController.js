@@ -50,7 +50,11 @@ export const getDeclarations = (req, res, next) => {
 		
 } */
 export const getAdvancedDeclarations = (req, res, next) => {
-	let to_search = req.query.objet+' '+req.query.ministry+' '+req.query.date
+	let ministry;
+	if (req.query.ministry=="defense") ministry='DEFENSE';
+	 if (req.query.ministry=="interieur") ministry="L'INTERIEUR";
+	
+	let to_search = req.query.objet+' '+ministry+' '+req.query.date
 	console.log('ser',to_search);
 	
 	Names.aggregate([
@@ -76,11 +80,11 @@ export const getAdvancedDeclarations = (req, res, next) => {
 					"score": { "$gt": 0.6 } 
 			   } 
 		 },
+		 {$sort:{score:{$meta:"textScore"}}},
 		 { $group: {
 			_id: {name:"$name",lastName:"$lastName"}  // replace `name` here twice
 			
-		  } },
-		 {$sort:{score:{$meta:"textScore"}}}
+		  } }
 	]
 	,function(err, resultedNames) {
 		if (err) { console.log(err);}

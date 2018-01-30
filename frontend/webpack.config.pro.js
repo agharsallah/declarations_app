@@ -1,3 +1,4 @@
+//DOOOOONNNNNNNN444TT FORGET TO CHANGE CONFIG !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 var path = require('path');
 var webpack = require('webpack');
 
